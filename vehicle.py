@@ -61,6 +61,13 @@ class Vehicle:
 
 
         # añadir para widget scale luminosidad
+        self.labelframe2=ttk.LabelFrame(self.ventana1, text="Enviroment Light")        
+        self.labelframe2.grid(column=0, row=2, padx=5, pady=10, sticky="WE")
+
+        self.scale = tk.Scale(self.labelframe2, from_=0, to=99, orient=tk.HORIZONTAL)
+        self.scale.pack(fill="x")
+        self.scale.set(self.environment.get_lum())
+
 
         # añadir barra progreso combustible
 
@@ -82,8 +89,10 @@ class Vehicle:
                 self.blinker_rear.blink()
         if evento.keysym=='r':
                 self.environment.modify_lum(10)
+                self.scale.set(self.environment.get_lum())
         if evento.keysym=='f':
                 self.environment.modify_lum(-10)
+                self.scale.set(self.environment.get_lum())
         if evento.keysym=='w':
                 self.engine.modify_rpm(100)
         if evento.keysym=='z':
@@ -163,6 +172,10 @@ class Vehicle:
             pos=pos+1
     
 
+    def update_lum(self,event):
+        self.environment.set_lum(self.scale.get())
+    
+
     def do_work(self):
         self.ventana1.after(10,self.do_work)
 
@@ -187,6 +200,7 @@ class Vehicle:
            self.engine.stop()
 
         # actualizar escala
+        self.scale.config(command=self.update_lum)
 
         # actualizar barra de progreso
 
