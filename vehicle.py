@@ -53,6 +53,12 @@ class Vehicle:
 
 
         # añadir label para motor
+        self.labelframe1=ttk.LabelFrame(self.ventana1, text="Engine")        
+        self.labelframe1.grid(column=0, row=1, padx=5, pady=10, sticky="WE")
+        
+        self.label1 = tk.Label(self.labelframe1, text=str(self.engine))
+        self.label1.pack()
+
 
         # añadir para widget scale luminosidad
 
@@ -172,6 +178,9 @@ class Vehicle:
         self.draw_blinker_rear()
         self.draw_light()
         self.draw_redlight()
+
+        #actualizacion etiqueta estado motor
+        self.label1.config(text=str(self.engine))
 
         # actualizar escala
 
