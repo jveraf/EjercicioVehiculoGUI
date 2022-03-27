@@ -57,6 +57,12 @@ class Vehicle:
         # añadir para widget scale luminosidad
 
         # añadir barra progreso combustible
+        self.labelframe3=ttk.LabelFrame(self.ventana1, text="Fuel level")        
+        self.labelframe3.grid(column=0, row=3, padx=5, pady=10, sticky="WE")
+        
+        self.progress = ttk.Progressbar(self.labelframe3, orient = HORIZONTAL, length = 100, mode = 'determinate') 
+        self.progress.pack(fill="x")
+
 
         self.ventana1.after(500,self.do_work)
         self.ventana1.bind("<KeyPress>", self.action)
@@ -176,5 +182,6 @@ class Vehicle:
         # actualizar escala
 
         # actualizar barra de progreso
+        self.progress['value'] = self.fuel.get_porcentage_level()
 
 vehicle1 = Vehicle()
