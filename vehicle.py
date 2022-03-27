@@ -96,8 +96,8 @@ class Vehicle:
                 self.redlight.activate()
         if evento.keysym=='v':
                 self.redlight.deactivate()
-        #if evento.keysym=='g':
-        #        self.fuel.reload()
+        if evento.keysym=='g':
+                self.fuel.refuel()
 
 
     def draw_background(self):       
