@@ -182,6 +182,10 @@ class Vehicle:
         #actualizacion etiqueta estado motor
         self.label1.config(text=str(self.engine))
 
+        #implementación revoluciones a 0 cuando no hay combustible
+        if self.fuel.level == 0:        
+           self.engine.stop()
+
         # actualizar escala
 
         # actualizar barra de progreso
