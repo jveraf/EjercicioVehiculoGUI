@@ -28,3 +28,5 @@ class RedLight(threading.Thread):
                     self.pos=i
                     sleep(0.2)
                     i=i+1
+            else:                   # añado esto para evitar que la ventana se quede
+                sleep(0.2)          # "pillada" cuando las luces rojas están desactivadas
